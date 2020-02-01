@@ -2,45 +2,77 @@ import os
 os.system("date")
 
 
-def run():
-	print("All files will download where is the install file is located so please put it into a separate directory with no other files. ^-^")
+def f1open():
+	print(" All files will download where is the install file is located so please put it into a separate directory. ^-^")
 	a = input ("Would you like to download the the pi-cam files? (Y/N): ")
 	if (a == "Y" or a == "y"):
-		os.system("mkdir pics")
-		os.system("cd img/;wget https://raw.githubusercontent.com/NoahMcGe/python/master/2019-2020/turtle/Plot-Line-Circle/img/42.png")
-		os.system("wget https://raw.githubusercontent.com/NoahMcGe/python/master/2019-2020/turtle/Plot-Line-Circle/run.py")
+		os.system("mkdir rpi-camera")
+		os.system("cd rpi-camera/;mkdir pics/")
+		os.system("cd rpi-camera/;mkdir videos/")
+		os.system("cd rpi-camera/;wget install.py")
+		os.system("cd rpi-camera/;wget rpi-camera/make-mp4.py")
 		os.system("date")
 	elif (a == "N" or a == "n"):
-		run3()
 		exit()
 	else:
-		run()
+		f1open()
+		
+def f4dependencies():
+	a = input ("would you like to install dependencies? (Y/N): ")
+	if (a == "Y" or a == "y"):
+		f5ffmpeg()
+	elif (a == "N" or a == "n"):
+		f2credits()
+	else:
+		f4install()		
+		
+
+def f5ffmpeg():
+	a = input ("would you like to install ffmpeg? (Y/N): ")
+	if (a == "Y" or a == "y"):
+		os.system("date")
+		os.system("sudo apt install ffmpeg -y")
+		os.system("date")
+	elif (a == "N" or a == "n"):
+		print("did not install ffmpeg.")
+	else:
+		f4install()	
+
+
+
+
 	
-def run3():
+def f2credits():
 	a = input ("Would you like to display the credits? (Y/N): ")
 	if (a == "Y" or a == "y"):
 		print("Noah McGehee")
-		print("Mr. Coleman")
 	elif (a == "N" or a == "n"):
 		print("did not display credits.")
 	else:
-		run3()
+		f2credits()
 
-def run4():
+def f3instructions():
 	a = input ("Would you like to download instructions? (Y/N): ")
 	if (a == "Y" or a == "y"):
-		os.system("wget https://raw.githubusercontent.com/NoahMcGe/python/master/2019-2020/turtle/Plot-Line-Circle/instructions.txt")
+		os.system("cd rpi-camera/;wget instructions")
 		
 	elif (a == "N" or a == "n"):
 		print("did not download instructions.")
-	else:
-		run4()
 		
+	else:
+		f3instructions()
+		
+def f6end():
+	os.system("date")
 
 
+def main():
+	f1open()
+	f3instructions()
+	f4dependencies()
+	f2credits()
+	f6end()
 
-run()
-run4()
-run3()
 
-os.system("rm install.py")
+main()
+
